@@ -3,8 +3,11 @@ from math import sqrt
 
 @lru_cache(None)
 def is_simple(n):
-    if n < 2 or (n % 2 == 0 and n != 2):
+    if n < 2 or (n % 2 == 0 and n % 2 != 0):
         return False
+
+    if n == 2:
+        return True
 
     for i in range(2, int(sqrt(n))+1):
         if n % i == 0:
@@ -25,11 +28,9 @@ def divs(n):
             for d in dels:
                 if d % 2 == 0:
                     chetDel.append(d)
-                    continue
                 if is_simple(d):
                     simpleDel.append(d)
     return chetDel, simpleDel
-
 
 def m(n):
     d = divs(n)
