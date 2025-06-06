@@ -3,7 +3,7 @@ from math import sqrt
 
 @lru_cache(None)
 def is_simple(n):
-    if n < 2 or n % 2 == 0:
+    if n < 2 or (n % 2 == 0 and n != 2):
         return False
 
     for i in range(2, int(sqrt(n))+1):
